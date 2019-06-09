@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
     entry: './apps/index.js',
@@ -8,22 +9,38 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader']
-            }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+              test: /\.scss$/,
+              use: ['scss-loader']
+          }
         ]
     },
     resolve: {
         extensions: ['*', '.js', '.jsx']
     },
     output: {
-      path: __dirname + '/dist',
+      path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
       filename: 'bundle.js'
     },
-    // pulgins: [
-    //   new webpack.HotModuleReplacementPlugin()
-    // ],
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        Popper: ['popper.js', 'default']
+      })
+    // new webpack.HotModuleReplacementPlugin()
+    ],
     devServer: {
+      historyApiFallback: true,
       contentBase: './dist',
+      port: 9000
       // hot: true
     }
   };

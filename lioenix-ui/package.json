@@ -23,7 +23,14 @@
     "webpack-dev-server": "^3.7.1"
   },
   "dependencies": {
+    "css-loader": "^2.1.1",
+    "file-loader": "^4.0.0",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "scss-loader": "0.0.1",
+    "url-loader": "^2.0.0"
   }
 }
