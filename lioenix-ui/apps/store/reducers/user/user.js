@@ -4,9 +4,14 @@ const initialState = {
     isLoading: false,
     userInfo: {
         firstName: "",
-        lastName: ""
+        lastName: "",
+        role: {
+            adminFlag: true,
+            managerFlag: true,
+            userFlag: true
+        }
     },
-    error: null
+    error: null,
 };
 
 const user = (state = initialState, action ={}) => {

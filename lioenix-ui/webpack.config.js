@@ -15,13 +15,13 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-              test: /\.scss$/,
-              use: ['scss-loader']
+                test: /\.scss$/,
+                use: ['scss-loader']
           }
         ]
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx']
+        extensions: ['*', '.js', '.jsx', 'css']
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -40,7 +40,7 @@ module.exports = {
     devServer: {
       historyApiFallback: true,
       contentBase: './dist',
-      port: 9000
+      port: 7887
       // hot: true
     }
   };
