@@ -1,0 +1,37 @@
+.nav_container{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(122, 118, 118);
+}
+
+.nav_container li {
+    float: left;
+}
+
+.nav_login {
+    float: right !important;
+}
+
+.nav_item_active {
+    background-color: #4CAF50 !important;
+}
+  
+.nav_container li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+.nav_container li a:hover{
+    background-color: #111;
+}
+
+
+@media screen and (max-width: 600px) {
+  .nav_container li.right, 
+  .nav_container li {float: none;}
+}
