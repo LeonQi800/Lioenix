@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(122, 118, 118);
+    background-color:#24292e;
 }
 
 .nav_container li {
@@ -27,7 +27,7 @@
 }
   
 .nav_container li a:hover{
-    background-color: #111;
+    color: rgb(201, 201, 201);
 }
 
 
