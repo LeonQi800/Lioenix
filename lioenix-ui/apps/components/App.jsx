@@ -3,6 +3,7 @@ import GlobalNav from "./navigation";
 import {connect} from "react-redux";
 import {fetchUserInfo} from "../store/reducers/user/user.action";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {LoginPage} from "./login";
 
 export class App extends Component{
     constructor(props){
@@ -36,7 +37,6 @@ export class App extends Component{
 }
 
 const HomePage = () => <div>This is a Home Page</div>
-const LoginPage = () => <div>This is a Login Page</div>
 const DashboardPage = () => <div>This is Dashboard Page</div>
 const LeetcodePage = () => <div>This is Leetcode Page</div>
 
@@ -48,6 +48,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     // Dispatch action
-    fetchUserInfo
+    fetchUserInfo,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

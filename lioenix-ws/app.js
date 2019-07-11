@@ -14,16 +14,17 @@ app.use(bodyParser.json());
 app.use(require('method-override')());
 app.use(express.static(__dirname + '/public'));
 app.use(errorhandler());
+mongoose.set('useCreateIndex', true);
 
 // DB
 const db = require('./config/keys').MongoURI;
 // DB connect
-mongoose.connect(db, {useNewUrlParser: true})
-    .then(() => console.log(messages.dbConnect))
+mongoose.connect(db, {useNewUrlParser: true, useFindAndModify: false})
+    .then(() => console.log(messages.DB_CONNECT))
     .catch(err => console.log(err) );
 
 // Routes
-app.use('/', require('./routes'));
+app.use('/', require('./api'));
 
 const PORT = process.env.PORT || 9000;
 
