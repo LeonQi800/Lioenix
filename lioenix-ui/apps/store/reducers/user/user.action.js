@@ -1,7 +1,6 @@
 import * as types from "./user.types";
-import axios from "axios";
 
-export const fetchUserInfo = () => (dispatch) => {
+export const fetchUserInfo = (user) => (dispatch) => {
     return dispatch({
         types: [
             types.USER_INFO_FAILURE,
@@ -10,30 +9,28 @@ export const fetchUserInfo = () => (dispatch) => {
         ],
         request: {
             method: "POST",
-            endpoint: "https://localhost:9000/user/signin"
+            endpoint: "user/signin",
+            body: {
+                user
+            }
         }
     })
 }
 
 
-export const userLogin = ({userName, password}) => {
-    return (dispatch) => {
-        console.log(userName, password);
-
-        axios.post("https://localhost:9000/user/signin", {
-            userName: userName,
-            password: password
-        })
-        // .then(res => res.json())
-        .then(user => {
-            dispatch({
-                type: [
-                    types.USER_LOGIN_FAILURE,
-                    types.USER_LOGIN_REQUEST,
-                    types.USER_LOGIN_SUCCESS
-                ],
-                payload: user
-            })
-        })
-    }
-}
+export const userLogin = (user) => (dispatch) => {
+    return dispatch({
+        types: [
+            types.USER_LOGIN_FAILURE,
+            types.USER_LOGIN_REQUEST,
+            types.USER_LOGIN_SUCCESS
+        ],
+        request: {
+            method: "POST",
+            endpoint: "user/signin.json",
+            body: {
+                user
+            }
+        }
+    })
+};

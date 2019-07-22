@@ -2,24 +2,28 @@
 
 import axios from "axios";
 
-const BASE_URL = "https://localhost:9000/";
 const headers = {
     "Accept": "aaplication/json, text/plain, */*",
-    "Content-type": "application/json"
+    "Content-type": "application/json",
+    "autorizacion": "lioenix"
 };
 
-export const invoke = ({endpoint, method = "GET"}, body = {}) => {
-    const url = `${BASE_URL}${endpoint}`;
+
+export const invoke = ({endpoint, method = "GET", body = {}, responseType="json" }) => {
+    const url = endpoint;
+    const baseURL = "//localhost:9000/lioenix/";
     const params = {
+        baseURL,
         method,
         url,
         data: body,
-        headers
+        headers,
+        responseType
     };
 
     return axios(params)
                 .then((response) => Promise.resolve(response))
-                .catch(error => Promise.reject(error))
+                .catch(error => Promise.reject(error));
 }
 
 const apiMiddleware = (store) => (next) => (action) => {
@@ -30,18 +34,19 @@ const apiMiddleware = (store) => (next) => (action) => {
     }
 
     const {
-        request: {method, endpoint, body},
-        types: [REQUEST, SUCCESS, FAILURE]
+        request: {method, endpoint, body, responseType},
+        types: [REQUEST, SUCCESS, FAILURE],
+        ...rest
     } = action;
 
-    next ({types: REQUEST});
+    next ({type: REQUEST});
 
-    return invoke({method, body, endpoint})
+    return invoke({method, body, endpoint, responseType})
         .then((response) => {
-            return (response.status >=200 && response.status < 300) ? 
-                next({type: SUCCESS, payload: response.data}) : next({type: FAILURE, error: response.data})
+            return (response.status >=200 && response.status < 400) ? 
+                next({type: SUCCESS, payload: response.data, headers: response.headers, ...rest}) : next({type: FAILURE, error: response.data})
         })
-        .catch((error) => next({type: FAILURE, error}));
+        .catch((error) => next({type: FAILURE, error, ...rest}));
 }
 
 export default apiMiddleware;
