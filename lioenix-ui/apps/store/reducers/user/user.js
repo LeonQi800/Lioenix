@@ -2,20 +2,7 @@ import * as types from "./user.types";
 
 const initialState = {
     isLoading: false,
-    userInfo: {
-        firstName: null,
-        lastName: null,
-        role: {
-            adminFlag: false,
-            managerFlag: false,
-            userFlag: false,
-
-        },
-        email: null,
-        password: null,
-        isDeleted: false,
-        avatar: null
-    },
+    userInfo: [],
     error: null,
 };
 

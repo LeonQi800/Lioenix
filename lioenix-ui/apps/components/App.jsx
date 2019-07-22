@@ -5,15 +5,19 @@ import {fetchUserInfo} from "../store/reducers/user/user.action";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {LoginPage} from "./login";
 
+
 export class App extends Component{
     constructor(props){
         super(props);
     }
     
-    componentDidMount(){
-        fetchUserInfo();
+    componentDidMount = () => {
+        // this.props.fetchUserInfo({
+        //     "userName": "test4",
+        //     "password": "123"
+        // })
     }
-    
+
     render(){
         const user = this.props.user;
         console.log(user);
@@ -27,7 +31,7 @@ export class App extends Component{
                                 <Route component={LoginPage} path="/login" />
                                 <Route exact component={HomePage} path="/" />
                                 <Route component={DashboardPage} path="/dashboard" />
-                                {user.userInfo.role.adminFlag && <Route component={LeetcodePage} path="/leetcode" />}
+                                <Route component={LeetcodePage} path="/leetcode" />
                             </Switch>
                         </div>
                     </Router>}
@@ -36,7 +40,7 @@ export class App extends Component{
     }
 }
 
-const HomePage = () => <div>This is a Home Page</div>
+const HomePage = () => <div>Home Page</div>
 const DashboardPage = () => <div>This is Dashboard Page</div>
 const LeetcodePage = () => <div>This is Leetcode Page</div>
 

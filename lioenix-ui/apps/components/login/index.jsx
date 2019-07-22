@@ -1,6 +1,8 @@
 import React, {Component} from "react";
-import {userLogin} from "../../store/reducers/user/user.action";
+// import {userLogin} from "../../store/reducers/user/user.action";
 import {connect} from "react-redux";
+import axios from "axios";
+
 
 export class LoginPage extends Component {
 
@@ -20,7 +22,20 @@ export class LoginPage extends Component {
           });
     }
     _submitLogin = () => {
-        userLogin("test1", "123");
+        // this.props.userLogin("test1", "123");
+        axios({
+            baseURL: "//localhost:9000/lioenix/",
+            url: "/user/signin",
+            method: "POST",
+            data: {
+                "userName": "test4",
+                "password": "123"
+            },
+            headers: {
+                "autorizacion": "lioenix"
+            }
+        }).then(res => console.log(res))
+        .catch(err => console.log(err));
         console.log(this.props.user);
         console.log("im here");
     }
@@ -44,6 +59,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     // Dispatch action
-    userLogin,
+    // userLogin,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

@@ -48,10 +48,11 @@ class GlobalNav extends Component {
                     <li className={this.state.Dashboard? "nav_item_active" : "nav_item"}>
                         <Link to="/dashboard" onClick={()=>this._changeHeaderClassName(2)}>Dashboard</Link>
                     </li>
-                    {user.userInfo.role.adminFlag && 
-                      <li className={this.state.Leetcode? "nav_item_active" : "nav_item"}>
-                          <Link to="/leetcode" onClick={()=>this._changeHeaderClassName(3)}>Leetcode</Link></li>
-                    }
+                   
+                    <li className={this.state.Leetcode? "nav_item_active" : "nav_item"}>
+                        <Link to="/leetcode" onClick={()=>this._changeHeaderClassName(3)}>Leetcode</Link>
+                    </li>
+                
 
                     <li className="nav_login">
                         <Link to="/login">Login</Link>
