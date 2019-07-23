@@ -5,8 +5,8 @@ const messages = require('../config/messages');
 
 /* ===============Login=============== */
 const loginUser = (req, res, next) => {
-    const userName = req.body.userName;
-    const password = req.body.password;
+    const userName = req.body.user.userName;
+    const password = req.body.user.password;
     if (userName != null && password != null){
         User.findOne({'userName': userName})
         .exec().then(
@@ -14,9 +14,14 @@ const loginUser = (req, res, next) => {
                 result.comparePassword(password, function(err, isMatch){
                     if (err) throw err;
                     else if (isMatch){
+                        let returnObj = {};
+                        for (let key in result._doc){
+                            if (key === "password") continue;
+                            returnObj[key] = result[key];
+                        }
                         res.status(200).json({
                             message: messages.GET_COMPLETED,
-                            response: result
+                            userInfo: returnObj
                         });
                     }else {
                         res.status(400).json({

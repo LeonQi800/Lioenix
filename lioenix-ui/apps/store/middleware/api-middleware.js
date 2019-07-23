@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const headers = {
-    "Accept": "aaplication/json, text/plain, */*",
+    "Accept": "aplication/json, text/plain, */*",
     "Content-type": "application/json",
     "autorizacion": "lioenix"
 };
@@ -20,7 +20,6 @@ export const invoke = ({endpoint, method = "GET", body = {}, responseType="json"
         headers,
         responseType
     };
-
     return axios(params)
                 .then((response) => Promise.resolve(response))
                 .catch(error => Promise.reject(error));
