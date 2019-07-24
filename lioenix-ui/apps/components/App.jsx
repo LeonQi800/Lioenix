@@ -3,7 +3,7 @@ import GlobalNav from "./navigation";
 import {connect} from "react-redux";
 import {fetchUserInfo} from "../store/reducers/user/user.action";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import {LoginPage} from "./login";
+import LoginPage from "./login";
 
 
 export class App extends Component{
@@ -11,12 +11,12 @@ export class App extends Component{
         super(props);
     }
     
-    componentDidMount = () => {
-        // this.props.fetchUserInfo({
-        //     "userName": "test4",
-        //     "password": "123"
-        // })
-    }
+    // componentDidMount = () => {
+    //     this.props.fetchUserInfo({
+    //         "userName": "test4",
+    //         "password": "123"
+    //     })
+    // }
 
     render(){
         const user = this.props.user;
