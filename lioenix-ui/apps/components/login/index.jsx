@@ -28,6 +28,7 @@ export class LoginPage extends Component {
     }
 
     render(){
+        // console.log(this.props.user.isLogin);
         return (
             <div>
                 This is a Login Page
@@ -46,7 +47,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     // Dispatch action
-    // userLogin,
     fetchUserInfo
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
