@@ -1,5 +1,5 @@
 module.exports = {
-    MongoURI: 'mongodb+srv://general:forever18@lioenix-xh0yh.mongodb.net/webapp',
+    MongoURI: 'mongodb+srv://general:forever18@lioenix-xh0yh.mongodb.net/',
     // mongoClient option is no longer necessary in mongoose 5.x    
     // mongoClient: {
     //     useMongoClient: true
