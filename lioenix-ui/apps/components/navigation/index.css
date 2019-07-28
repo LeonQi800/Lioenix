@@ -14,6 +14,10 @@
     float: right !important;
 }
 
+.nav_logout {
+    float: right !important;
+}
+
 .nav_item_active {
     background-color: #4CAF50 !important;
 }
@@ -34,4 +38,6 @@
 @media screen and (max-width: 600px) {
   .nav_container li.right, 
   .nav_container li {float: none;}
+  .nav_login {float: none !important}
+  .nav_logout {float: none !important}
 }
