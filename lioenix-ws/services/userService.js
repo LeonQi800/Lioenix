@@ -25,7 +25,7 @@ const loginUser = (req, res, next) => {
                         });
                     }else {
                         res.status(400).json({
-                            message: messages.PASSWORD_EEEOR,
+                            message: messages.PASSWORD_ERROR,
                         });
                     }
                 })
@@ -38,7 +38,7 @@ const loginUser = (req, res, next) => {
             });
         });
     }else{
-        res.status(400).json({message: messages.INPUT_EEEOR})
+        res.status(400).json({message: messages.INPUT_ERROR})
     }
 };
 

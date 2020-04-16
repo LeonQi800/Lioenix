@@ -9,6 +9,6 @@ module.exports = {
     UPDATE_COMPLETED: '==========Update completed!===============',
     UPDATE_FAILED: '==========Update failed!===============',
     CANNOT_FIND_USER: '==========Can not find user!===============',
-    INPUT_EEEOR: '==========Please correct input!===============',
-    PASSWORD_EEEOR: '==========Password not correct!===============',
+    INPUT_ERROR: '==========Please correct input!===============',
+    PASSWORD_ERROR: '==========Password not correct!===============',
 }

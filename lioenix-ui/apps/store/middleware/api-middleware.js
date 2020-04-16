@@ -1,6 +1,5 @@
-/* tempoary not using */ 
-
 import axios from "axios";
+import {apiURL} from "../../config/setting"
 
 const headers = {
     "Accept": "aplication/json, text/plain, */*",
@@ -11,9 +10,8 @@ const headers = {
 
 export const invoke = ({endpoint, method = "GET", body = {}, responseType="json" }) => {
     const url = endpoint;
-    const baseURL = "//localhost:9000/lioenix/";
     const params = {
-        baseURL,
+        apiURL,
         method,
         url,
         data: body,
