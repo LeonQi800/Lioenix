@@ -1,8 +1,8 @@
-import * as types from "./user.types";
+import {GET_USER_INFO_REQUEST, GET_USER_INFO_SUCCESS, GET_USER_INFO_FAILURE} from '../../constants/actionTypes';
 
 const initialState = {
     isLoading: false,
-    userInfo: {},
+    userInfoStore: {},
     isLogin: false,
     error: null,
 };
@@ -11,21 +11,21 @@ const user = (state = initialState, action ={}) => {
     switch(action.type) {
 
         // fetch user info action
-        case types.USER_INFO_REQUEST:
+        case GET_USER_INFO_REQUEST:
             return {
                 ...state,
                 isLoading: true
             };
 
-        case types.USER_INFO_SUCCESS:
+        case GET_USER_INFO_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
                 isLogin: true,
-                userInfo: action.payload
+                userInfoStore: action.value.data
             }
 
-        case types.USER_INFO_FAILURE:
+        case GET_USER_INFO_FAILURE:
             return {
                 ...state,
                 isLoading: false,

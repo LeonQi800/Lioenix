@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 
-module.exports = {
+module.exports = (env, {mode}) => {
+  const config = {
     entry: './apps/index.jsx',
     module: {
         rules: [
@@ -43,4 +44,7 @@ module.exports = {
       port: 7887
       // hot: true
     }
-  };
+  }
+
+  return config;
+};

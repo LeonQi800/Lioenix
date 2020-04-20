@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import GlobalNav from "./navigation";
 import {connect} from "react-redux";
-import {fetchUserInfo} from "../store/reducers/user/user.action";
+import {fetchUserInfo} from "../store/reducers/user.action";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import LoginPage from "./login";
 import DashboardPage from "./dashboard";

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {fetchUserInfo} from "../../store/reducers/user/user.action";
+import {fetchUserInfo} from "../../store/reducers/user.action";
 
 
 export class LoginPage extends Component {

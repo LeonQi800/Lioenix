@@ -1,3 +1,8 @@
-const apiURL = "localhost:9000/lioenix/";
+const apiRootURL = "http://localhost:9000/lioenix/";
 
-export {apiURL};
+const apiHeaders = {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Accept': 'application/json'
+}
+
+export {apiRootURL, apiHeaders};

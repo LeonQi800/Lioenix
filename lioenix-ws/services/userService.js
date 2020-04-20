@@ -7,6 +7,7 @@ const messages = require('../config/messages');
 const loginUser = (req, res, next) => {
     const userName = req.body.user.userName;
     const password = req.body.user.password;
+    console.log(userName, password);
     if (userName != null && password != null){
         User.findOne({'userName': userName})
         .exec().then(
