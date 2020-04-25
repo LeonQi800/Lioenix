@@ -10,21 +10,13 @@
     float: left;
 }
 
-.nav_login {
+.nav__right-item {
     float: right !important;
-}
-
-.nav_logout {
-    float: right !important;
-}
-
-.nav_item_active {
-    background-color: #4CAF50 !important;
 }
   
 .nav_container li a {
     display: block;
-    color: white;
+    color: #f5f5f7;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -38,6 +30,6 @@
 @media screen and (max-width: 600px) {
   .nav_container li.right, 
   .nav_container li {float: none;}
-  .nav_login {float: none !important}
-  .nav_logout {float: none !important}
+  .nav__right-item-active {float: none !important}
+  .nav__right-item {float: none !important}
 }

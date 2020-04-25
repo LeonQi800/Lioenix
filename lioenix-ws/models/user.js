@@ -1,78 +1,101 @@
- const mongoose = require('mongoose');
- const bcrypt = require('bcryptjs');
- const SALT_WORK_FACTOR = 10;
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
+const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
+const secret = require('../config/keys').secret;
+const messages = require('../config/messages');
+ 
 
- const UserSchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+var UserSchema = new mongoose.Schema({
+  username: {type: String, lowercase: true, unique: true, required: [true, messages.CANNOT_BLANK], match: [/^[a-zA-Z0-9]+$/, messages.IS_INVALID], index: true},
+  email: {type: String, lowercase: true, unique: true, required: [true, messages.CANNOT_BLANK], match: [/\S+@\S+\.\S+/, messages.IS_INVALID], index: true},
+  bio: String,
+  image: String,
+  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Article' }],
+  following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  hash: String,
+  salt: String
+}, {timestamps: true});
 
-    firstName: {
-        type: String,
-        default: ''
-    },
-    lastName: {
-        type: String,
-        default: ''
-    },
-    userName:{
-        type: String,
-        lowercase: true,
-        unique: true,
-        required: [true, "Can't be blank"],
-        match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
-        index: true
-    },
-    email: {
-        type: String,
-        lowercase: true,
-        unique: true,
-        required: [true, "Can't be blank"],
-        match: [/\S+@\S+\.\S+/, 'is invalid'],
-        index: true
-    },
-    password: {
-        type: String,
-        default: '',
-        required: true
-    },
-    isDeleted: {
-        type: Boolean,
-        default: false
-    },
-    roleType: {
-        type: Number,
-        default: 1
-    },
-    avatar: {
-        type: Number,
-        default: 0
-    }
- });
+UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
- UserSchema.pre('save', function(next) {
-    var user = this;
-
-    // only hash the password if it has been modified (or is new)
-    if (!user.isModified('password')) return next();
-
-    // generate a salt
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-        if (err) return next(err);
-
-        // hash the password using our new salt
-        bcrypt.hash(user.password, salt, function(err, hash) {
-            if (err) return next(err);
-
-            // override the cleartext password with the hashed one
-            user.password = hash;
-            next();
-        });
-    });
-});
-
-UserSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) return cb(err);
-        cb(null, isMatch);
-    });
+UserSchema.methods.validPassword = function(password) {
+  var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+  return this.hash === hash;
 };
- module.exports = mongoose.model('User', UserSchema);
+
+UserSchema.methods.setPassword = function(password){
+  this.salt = crypto.randomBytes(16).toString('hex');
+  this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+};
+
+UserSchema.methods.generateJWT = function() {
+  var today = new Date();
+  var exp = new Date(today);
+  exp.setDate(today.getDate() + 60);
+
+  return jwt.sign({
+    id: this._id,
+    username: this.username,
+    exp: parseInt(exp.getTime() / 1000),
+  }, secret);
+};
+
+UserSchema.methods.toAuthJSON = function(){
+  return {
+    username: this.username,
+    email: this.email,
+    token: this.generateJWT(),
+    bio: this.bio,
+    image: this.image
+  };
+};
+
+UserSchema.methods.toProfileJSONFor = function(user){
+  return {
+    username: this.username,
+    bio: this.bio,
+    image: this.image || 'https://s1.ax1x.com/2020/04/20/J1cGDS.jpg',
+    following: user ? user.isFollowing(this._id) : false
+  };
+};
+
+UserSchema.methods.favorite = function(id){
+  if(this.favorites.indexOf(id) === -1){
+    this.favorites.push(id);
+  }
+
+  return this.save();
+};
+
+UserSchema.methods.unfavorite = function(id){
+  this.favorites.remove(id);
+  return this.save();
+};
+
+UserSchema.methods.isFavorite = function(id){
+  return this.favorites.some(function(favoriteId){
+    return favoriteId.toString() === id.toString();
+  });
+};
+
+UserSchema.methods.follow = function(id){
+  if(this.following.indexOf(id) === -1){
+    this.following.push(id);
+  }
+
+  return this.save();
+};
+
+UserSchema.methods.unfollow = function(id){
+  this.following.remove(id);
+  return this.save();
+};
+
+UserSchema.methods.isFollowing = function(id){
+  return this.following.some(function(followId){
+    return followId.toString() === id.toString();
+  });
+};
+
+mongoose.model('User', UserSchema);

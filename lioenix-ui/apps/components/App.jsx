@@ -26,8 +26,9 @@ export class App extends Component{
                                 <Route component={LoginPage} path="/login" />
                                 <Route exact component={HomePage} path="/" />
                                 <Route component={DashboardPage} path="/dashboard" />
-                                <Route component={FroumPage} path="/forum" />
-                                <Route component={LogoutPage} path="/logout" />
+                                <Route component={ForumPage} path="/forum" />
+                                <Route component={SettingPage} path="/setting" />
+                                <Route component={SignUpPage} path="/signup"/>
                             </Switch>
                         </div>
                     </Router>}
@@ -37,9 +38,9 @@ export class App extends Component{
 }
 
 const HomePage = () => <div>Home Page</div>
-const FroumPage = () => <div>This is Froum Page</div>
-const LogoutPage = () => <div>Logout Page</div>
-
+const ForumPage = () => <div>This is Forum Page</div>
+const SettingPage = () => <div>Logout Page</div>
+const SignUpPage = () => <div>Sign Up Page</div>
 
 const mapStateToProps = (state) => ({
     // (state, ownProps), ownProps is optional
