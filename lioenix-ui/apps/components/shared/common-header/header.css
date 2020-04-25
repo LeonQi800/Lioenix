@@ -1,0 +1,49 @@
+.header__container{
+    padding: 10px 0px;
+    text-align: center;
+    font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+.header__title{
+    padding: 5px 0px;
+    font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+
+.header__subtitle{
+    font-size: 17px;
+    line-height: 1.47059;
+    font-weight: 400;
+    color: #1d1d1f;
+    -webkit-font-smoothing: antialiased;
+    direction: ltr;
+    letter-spacing: 0em;
+    font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+    -webkit-box-direction: normal;
+    margin: 0;
+    padding: 0;
+    margin-top: .8em;
+    font-style: normal;
+    padding-top: 7px;
+}
+
+.header__link{
+    text-align: center;
+    text-decoration: none;
+}
+
+.header__span{
+    font-size: 17px;
+    line-height: 1.47059;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    direction: ltr;
+    font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+    -webkit-box-direction: normal;
+    color: #06c;
+    letter-spacing: inherit;
+    font-style: normal;
+}
+
+.header__span:hover{
+    text-decoration: underline;
+}

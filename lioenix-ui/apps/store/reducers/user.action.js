@@ -8,7 +8,7 @@ export const fetchUserInfo = user => dispatch => {
     });
     axios({
         method: 'post',
-        url: apiRootURL+'user/signin',
+        url: apiRootURL+'user/login',
         data: {
             user: user
         }
