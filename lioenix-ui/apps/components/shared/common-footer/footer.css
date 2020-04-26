@@ -1,0 +1,35 @@
+.footer__container{
+    position: fixed;
+    bottom: 0;
+    margin-top: 100px;
+    min-height: 50px;
+    z-index: 1;
+    background-color: #f8f8f8;
+    width: 100%;
+    text-align: center;
+    font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.footer__line{
+    border-top:1px solid #000000;
+}
+
+.footer__tag{
+    padding-right: 20px;
+    position: absolute;
+    right: 0;
+}
+
+.footer__span a{
+    font-family: arial;
+    font-size: 12px;
+    text-align: left;
+    line-height: 42px;
+    color: #777;
+    padding: 0 15px;
+    text-decoration: none;
+}
+
+.footer__span a:hover{
+    color: #000000;
+}

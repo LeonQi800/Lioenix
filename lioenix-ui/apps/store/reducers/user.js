@@ -1,4 +1,5 @@
-import {GET_USER_INFO_REQUEST, GET_USER_INFO_SUCCESS, GET_USER_INFO_FAILURE} from '../../constants/actionTypes';
+import {GET_USER_INFO_REQUEST, GET_USER_INFO_SUCCESS, GET_USER_INFO_FAILURE,
+        USER_SIGN_UP_REQUEST, USER_SIGN_UP_SUCCESS, USER_SIGN_UP_FAILURE} from '../../constants/actionTypes';
 
 const initialState = {
     isLoading: false,
@@ -12,6 +13,7 @@ const user = (state = initialState, action ={}) => {
 
         // fetch user info action
         case GET_USER_INFO_REQUEST:
+        case USER_SIGN_UP_REQUEST:
             return {
                 ...state,
                 isLoading: true
@@ -24,7 +26,12 @@ const user = (state = initialState, action ={}) => {
                 isLogin: true,
                 userInfoStore: action.value.data
             }
-
+        case USER_SIGN_UP_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+            }
+        case USER_SIGN_UP_FAILURE:
         case GET_USER_INFO_FAILURE:
             return {
                 ...state,

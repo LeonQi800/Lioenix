@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {fetchUserInfo} from "../../store/reducers/user.action";
 import "./login.css";
 import CommonHeader from "../shared/common-header";
+import CommonFooter from "../shared/common-footer";
 
 export class LoginPage extends Component {
 
@@ -29,12 +30,11 @@ export class LoginPage extends Component {
     }
 
     render(){
-        // console.log(this.props.user.isLogin);
         return (
             <div>
                 <CommonHeader 
-                    title={"This is a Login Page"}
-                    link={"Already have account? Click here to sign in"}
+                    title={"Login"}
+                    link={"Need a account? Click here to sign up."}
                     linkUrl={"/signup"}
                 />
                 <div className="login__container">
@@ -50,6 +50,7 @@ export class LoginPage extends Component {
                         </fieldset>
                     </fieldset>
                 </div>
+                <CommonFooter />
             </div>
         )
     }

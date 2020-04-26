@@ -9,6 +9,7 @@
 Lioenix is my first full stack forum project which have full control ability, user login by different can view/use differnt function, and only administrator can give/remove user authorization.
 
 ### Screenshot
+[Screen shot](./lioenix-ui/dist/screenshot01.PNG)
 
 ### API references
 <a href="https://reactjs.org/docs/react-api.html">React API</a>
