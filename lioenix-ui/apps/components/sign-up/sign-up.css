@@ -1,0 +1,71 @@
+.login__fieldset{
+    border: none;
+    margin-top: 50px;
+}
+
+.login__fieldset__element{
+    border: none;
+}
+
+.login__input{
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    font: inherit;
+    touch-action: manipulation;
+    margin: 0;
+    display: block;
+    width: 60%;
+    line-height: 1.25;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    padding: .75rem 1.5rem;
+    font-size: 1.25rem;
+    border-radius: .3rem;
+}
+
+.login__container{
+    -webkit-tap-highlight-color: transparent;
+    font-family: source sans pro,sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #373a3c;
+    box-sizing: inherit;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-left: 32.5%;
+}
+
+.sign-up__button{
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    font: inherit;
+    overflow: visible;
+    text-transform: none;
+    -webkit-appearance: button;
+    touch-action: manipulation;
+    margin: 0;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    color: #fff;
+    background-color: #6daad3;
+    border-color: #6daad3;
+    padding: .75rem 1.5rem;
+    font-size: 1.25rem;
+    border-radius: .3rem;
+    width: 60%;
+}
+
+.login__gap{
+    display: block;
+}

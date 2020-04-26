@@ -1,29 +1,28 @@
 .header__container{
-    padding: 10px 0px;
+    background-color: #f8f8f8;
     text-align: center;
     font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
+
 .header__title{
-    padding: 5px 0px;
-    font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+    padding: 10px 0px;
 }
 
+.header__title span{
+    font-size: 38px;
+    font-weight: bolder;
+}
 
 .header__subtitle{
     font-size: 17px;
     line-height: 1.47059;
     font-weight: 400;
-    color: #1d1d1f;
-    -webkit-font-smoothing: antialiased;
+    color: #9393a2;
     direction: ltr;
     letter-spacing: 0em;
-    font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
     -webkit-box-direction: normal;
     margin: 0;
-    padding: 0;
-    margin-top: .8em;
     font-style: normal;
-    padding-top: 7px;
 }
 
 .header__link{
@@ -31,7 +30,7 @@
     text-decoration: none;
 }
 
-.header__span{
+.header__link-span{
     font-size: 17px;
     line-height: 1.47059;
     font-weight: 400;
@@ -44,6 +43,14 @@
     font-style: normal;
 }
 
-.header__span:hover{
+.header__link-span:hover{
     text-decoration: underline;
+}
+
+.header__line{
+    border-bottom: 1px solid #000000;
+}
+
+.header__link-container{
+    padding: 5px 0px;
 }

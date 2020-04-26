@@ -1,4 +1,5 @@
-import {GET_USER_INFO_REQUEST, GET_USER_INFO_SUCCESS, GET_USER_INFO_FAILURE} from '../../constants/actionTypes';
+import {GET_USER_INFO_REQUEST, GET_USER_INFO_SUCCESS, GET_USER_INFO_FAILURE,
+        USER_SIGN_UP_REQUEST, USER_SIGN_UP_SUCCESS, USER_SIGN_UP_FAILURE} from '../../constants/actionTypes';
 import { apiRootURL } from '../../config/setting';
 import axios from 'axios';
 
@@ -22,6 +23,31 @@ export const fetchUserInfo = user => dispatch => {
         .catch(err => {
             return dispatch({
                 type: GET_USER_INFO_FAILURE,
+                value: err
+            })
+        });
+}
+
+export const signUpUser = user => dispatch => {
+    dispatch({
+        type: USER_SIGN_UP_REQUEST,
+    });
+    axios({
+        method: 'post',
+        url: apiRootURL+'user/signup',
+        data: {
+            user: user
+        }
+    })
+        .then(res => {
+            return dispatch({
+                type: USER_SIGN_UP_SUCCESS,
+                value: res
+            })
+        })
+        .catch(err => {
+            return dispatch({
+                type: USER_SIGN_UP_FAILURE,
                 value: err
             })
         });
