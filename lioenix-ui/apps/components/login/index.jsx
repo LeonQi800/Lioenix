@@ -4,6 +4,10 @@ import {fetchUserInfo} from "../../store/reducers/user.action";
 import "./login.css";
 import CommonHeader from "../shared/common-header";
 import CommonFooter from "../shared/common-footer";
+import TextField from "../shared/textField";
+import {controlModalOpen} from "../../store/reducers/general.action";
+import Modal from "../shared/modal";
+
 
 export class LoginPage extends Component {
 
@@ -27,6 +31,7 @@ export class LoginPage extends Component {
             "email": this.state.email,
             "password": this.state.password
         });
+        this.props.controlModalOpen();
     }
 
     render(){
@@ -37,15 +42,20 @@ export class LoginPage extends Component {
                     link={"Need a account? Click here to sign up."}
                     linkUrl={"/signup"}
                 />
+                <Modal
+                    isOpen={this.props.user.isError}
+                    type="error"
+                    context="Email or password not correct."
+                />
                 <div className="login__container">
                     <fieldset className="login__fieldset">
                         <fieldset className="login__fieldset__element">
-                            <input className="login__input" name="email" type="text" placeholder="Email" onChange={this.handleInputChange}/>
+                            <TextField name="email" type="text" placeholder="Email" onChange={this.handleInputChange}/>
                         </fieldset>
                         <fieldset className="login__fieldset__element">
-                            <input className="login__input" name="password" type="text" placeholder="Password" onChange={this.handleInputChange}/>
+                            <TextField name="password" type="password" placeholder="Password" onChange={this.handleInputChange}/>
                         </fieldset>
-                        <fieldset className="login__fieldset__element">
+                        <fieldset className="login__fieldset__element login__fieldset__submit">
                             <button className="login__button" onClick={this.submitLogin}>Login</button>
                         </fieldset>
                     </fieldset>
@@ -58,11 +68,13 @@ export class LoginPage extends Component {
 
 const mapStateToProps = (state) => ({
     // (state, ownProps), ownProps is optional
-    user: state.user
+    user: state.user,
+    general: state.general
 });
 
 const mapDispatchToProps = {
     // Dispatch action
-    fetchUserInfo
+    fetchUserInfo,
+    controlModalOpen
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

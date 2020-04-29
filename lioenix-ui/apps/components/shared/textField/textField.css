@@ -1,0 +1,26 @@
+.input__box{
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    font: inherit;
+    touch-action: manipulation;
+    margin: 0;
+    display: block;
+    width: 100%;
+    line-height: 1.25;
+    background-clip: padding-box;
+    border: none;
+    font-size: 1.25rem;
+}
+.input__box:focus{
+    outline: none;
+}
+
+.input__frame{
+    padding: .75rem 0.6rem;
+}
+
+
+.input__outline{
+    border-radius: .5rem;
+    border: 1px solid rgba(0,0,0,.15);
+}

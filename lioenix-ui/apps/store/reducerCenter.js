@@ -2,9 +2,11 @@ import {combineReducers} from 'redux';
 // import {connectRouter} from 'connected-react-router';
 
 import user from './reducers/user';
+import general from './reducers/general';
 
 export default combineReducers({
-    user
+    user,
+    general
 });
 
 // const createRootReducer = history => {

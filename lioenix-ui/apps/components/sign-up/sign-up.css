@@ -1,29 +1,13 @@
-.login__fieldset{
+.sign-up__fieldset{
     border: none;
     margin-top: 50px;
 }
 
-.login__fieldset__element{
+.sign-up__fieldset__element{
     border: none;
 }
 
-.login__input{
-    -webkit-tap-highlight-color: transparent;
-    box-sizing: inherit;
-    font: inherit;
-    touch-action: manipulation;
-    margin: 0;
-    display: block;
-    width: 60%;
-    line-height: 1.25;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    padding: .75rem 1.5rem;
-    font-size: 1.25rem;
-    border-radius: .3rem;
-}
-
-.login__container{
+.sign-up__container{
     -webkit-tap-highlight-color: transparent;
     font-family: source sans pro,sans-serif;
     font-size: 1rem;
@@ -35,13 +19,13 @@
     padding-right: 15px;
     padding-left: 15px;
     flex: 0 0 50%;
-    max-width: 50%;
-    margin-left: 32.5%;
+    max-width: 500px;
+    min-width: 300px;
+    margin: 0 auto;
 }
 
 .sign-up__button{
     -webkit-tap-highlight-color: transparent;
-    box-sizing: inherit;
     font: inherit;
     overflow: visible;
     text-transform: none;
@@ -50,7 +34,6 @@
     margin: 0;
     display: inline-block;
     font-weight: 400;
-    line-height: 1.25;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -60,12 +43,17 @@
     color: #fff;
     background-color: #6daad3;
     border-color: #6daad3;
-    padding: .75rem 1.5rem;
     font-size: 1.25rem;
     border-radius: .3rem;
-    width: 60%;
+    width: 100%;
+    padding: .60rem 1.5rem;
 }
 
-.login__gap{
+.sign-up__button-disable{
+    background-color: #858c91;
+    cursor: auto;
+}
+
+.sign-up__gap{
     display: block;
 }

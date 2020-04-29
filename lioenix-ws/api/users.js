@@ -6,7 +6,7 @@ router.post('/user/login', userService.loginUser);
 
 router.post('/user/signup', userService.createUser);
 
-// router.get('/user/dashboard/:userId', userService.getUserById);
+router.post('/user/checkEmail', userService.checkEmail);
 
 router.put('/user/update/', userService.updateUser);
 
