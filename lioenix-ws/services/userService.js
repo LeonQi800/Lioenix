@@ -36,22 +36,25 @@ const createUser = (req, res, next) => {
     user.username = req.body.user.username;
     user.email = req.body.user.email;
     user.setPassword(req.body.user.password);
-  
+
+    // User.findOne({$or:[{username:  user.username}, {email: user.email}]})
+    
     user.save().then(function(){
       return res.json({user: user.toAuthJSON()});
     }).catch(next);
 };
 
 
-/* ===============GetById=============== */
-const getUserById = (req, res, next) => {
-    User.findById(req.payload.id).then(function(user){
-        if(!user){ return res.sendStatus(401); }
-    
-        return res.json({user: user.toAuthJSON()});
-      }).catch(next);
+/* ===============CheckEmail=============== */
+const checkEmail = (req, res, next) => {
+  if (req.body.user && req.body.user.email){
+    User.findOne({email: req.body.user.email}).then(function(user){
+      if(!user){ return res.sendStatus(401); }
+  
+      return res.json({user: user.toAuthJSON()});
+    }).catch(next);
+  }else return res.sendStatus(401)
 };
-
 
 /* ===============Update=============== */
 const updateUser = (req, res, next) => {
@@ -114,5 +117,5 @@ const deleteUser = (req, res, next) => {
 };
 
 module.exports = {
-    loginUser, createUser, getUserById, updateUser, deleteUser
+    loginUser, createUser, checkEmail, updateUser, deleteUser
 }

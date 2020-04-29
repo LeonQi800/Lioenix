@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import LoginPage from "./login";
 import SignUpPage from "./sign-up";
 import DashboardPage from "./dashboard";
+import SettingPage from "./setting";
 
 
 export class App extends Component{
@@ -40,7 +41,6 @@ export class App extends Component{
 
 const HomePage = () => <div>Home Page</div>
 const ForumPage = () => <div>This is Forum Page</div>
-const SettingPage = () => <div>Logout Page</div>
 
 const mapStateToProps = (state) => ({
     // (state, ownProps), ownProps is optional

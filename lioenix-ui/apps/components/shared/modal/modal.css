@@ -1,0 +1,39 @@
+
+.modal__overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity 500ms;
+    background-color: #9696965b;
+    z-index: 10;
+    /* visibility: hidden; */
+    /* opacity: 0; */
+  }
+  
+.modal__overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal__frame {
+    margin: 170px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+    border: 1px solid black;
+    min-height: 100px;
+}
+
+.modal__header-error{
+    color: #ff0000;
+    font-weight: bolder;
+}
+
+.modal__close-button{
+    float: right;
+}

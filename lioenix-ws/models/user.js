@@ -7,8 +7,9 @@ const messages = require('../config/messages');
  
 
 var UserSchema = new mongoose.Schema({
-  username: {type: String, lowercase: true, unique: true, required: [true, messages.CANNOT_BLANK], match: [/^[a-zA-Z0-9]+$/, messages.IS_INVALID], index: true},
   email: {type: String, lowercase: true, unique: true, required: [true, messages.CANNOT_BLANK], match: [/\S+@\S+\.\S+/, messages.IS_INVALID], index: true},
+  username: {type: String, required: [true, messages.CANNOT_BLANK], match: [/^[a-zA-Z0-9]+$/, messages.IS_INVALID]},
+  isClosed: Boolean,
   bio: String,
   image: String,
   favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Article' }],
@@ -36,7 +37,7 @@ UserSchema.methods.generateJWT = function() {
 
   return jwt.sign({
     id: this._id,
-    username: this.username,
+    email: this.email,
     exp: parseInt(exp.getTime() / 1000),
   }, secret);
 };
@@ -47,7 +48,8 @@ UserSchema.methods.toAuthJSON = function(){
     email: this.email,
     token: this.generateJWT(),
     bio: this.bio,
-    image: this.image
+    image: this.image,
+    isClosed: this.isClosed
   };
 };
 
@@ -56,7 +58,8 @@ UserSchema.methods.toProfileJSONFor = function(user){
     username: this.username,
     bio: this.bio,
     image: this.image || 'https://s1.ax1x.com/2020/04/20/J1cGDS.jpg',
-    following: user ? user.isFollowing(this._id) : false
+    following: user ? user.isFollowing(this._id) : false,
+    isClosed: this.isClosed
   };
 };
 

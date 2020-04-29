@@ -1,8 +1,7 @@
 .footer__container{
     position: fixed;
     bottom: 0;
-    margin-top: 100px;
-    min-height: 50px;
+    min-height: 40px;
     z-index: 1;
     background-color: #f8f8f8;
     width: 100%;
