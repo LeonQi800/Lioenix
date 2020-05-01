@@ -12,28 +12,30 @@ class GlobalNav extends Component {
         const {isLogin} = this.props;
         return (
             <nav className="nav_main">
-                <ul className="nav_container">
+                <div className="nav__ul-container">
+                    <ul className="nav_container">
+                        
+                        <li className="nav_item">
+                            <Link to="/">Home</Link>
+                        </li>
+                        {isLogin && <li className="nav_item">
+                            <Link to="/dashboard">Dashboard</Link>
+                        </li>}
                     
-                    <li className="nav_item">
-                        <Link to="/">Home</Link>
-                    </li>
-                    {isLogin && <li className="nav_item">
-                        <Link to="/dashboard">Dashboard</Link>
-                    </li>}
-                   
-                    {isLogin && <li className="nav_item">
-                        <Link to="/forum">Forum</Link>
-                    </li>}
+                        {isLogin && <li className="nav_item">
+                            <Link to="/forum">Forum</Link>
+                        </li>}
 
-                    {!isLogin && <li className="nav__right-item">
-                        <Link to="/signup">Sign Up</Link>
-                    </li>}
-                    {!isLogin ? <li className="nav__right-item">
-                        <Link to="/login">Login</Link>
-                    </li>: <li className="nav__right-item">
-                        <Link to="/setting">Setting</Link>
-                    </li>}
-                </ul>
+                        {!isLogin && <li className="nav__right-item">
+                            <Link to="/signup">Sign Up</Link>
+                        </li>}
+                        {!isLogin ? <li className="nav__right-item">
+                            <Link to="/login">Login</Link>
+                        </li>: <li className="nav__right-item">
+                            <Link to="/setting">Setting</Link>
+                        </li>}
+                    </ul>
+                </div>
             </nav>
         );
     }

@@ -1,9 +1,8 @@
 .nav_container{
     list-style-type: none;
-    margin: 0;
+    margin: 0 20px;
     padding: 0;
     overflow: hidden;
-    background-color:#24292e;
 }
 
 .nav_container li {
@@ -32,4 +31,8 @@
   .nav_container li {float: none;}
   .nav__right-item-active {float: none !important}
   .nav__right-item {float: none !important}
+}
+
+.nav__ul-container{
+    background-color:#24292e;
 }

@@ -32,8 +32,22 @@
 .modal__header-error{
     color: #ff0000;
     font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.modal__header-success{
+    color: #008000;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 
 .modal__close-button{
     float: right;
+}
+
+.modal__line-break{
+    border-top: 1.5px solid #d3d3d3;
+    max-width: 65px;
 }

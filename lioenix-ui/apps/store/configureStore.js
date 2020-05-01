@@ -14,7 +14,7 @@ const getMiddleware = () => {
   if (process.env.NODE_ENV === 'production') {
     return applyMiddleware(routerMiddleware(history), thunk);
   } else {
-    return composeEnhancers(applyMiddleware(routerMiddleware(history), thunk, createLogger()));
+    return composeEnhancers(applyMiddleware(routerMiddleware(history), thunk));
   }
 };
 

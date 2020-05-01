@@ -3,10 +3,15 @@ import GlobalNav from "./navigation";
 import {connect} from "react-redux";
 import {fetchUserInfo} from "../store/reducers/user.action";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import LoginPage from "./login";
-import SignUpPage from "./sign-up";
-import DashboardPage from "./dashboard";
+import LoginPage from "./loginPage";
+import HomePage from "./homePage";
+import SignUpPage from "./signUpPage";
+import DashboardPage from "./dashboardPage";
 import SettingPage from "./setting";
+import { createBrowserHistory } from 'history';
+
+
+const browserHistory = createBrowserHistory();
 
 
 export class App extends Component{
@@ -20,26 +25,24 @@ export class App extends Component{
         // console.log(user);
         return (
             <div className="lioenix_main">
-                {!user.isLoading && 
-                    <Router>
-                        <div className="lioenix_router">
-                            <GlobalNav isLogin={user.isLogin}/>
-                            <Switch>
-                                <Route component={LoginPage} path="/login" />
-                                <Route exact component={HomePage} path="/" />
-                                <Route component={DashboardPage} path="/dashboard" />
-                                <Route component={ForumPage} path="/forum" />
-                                <Route component={SettingPage} path="/setting" />
-                                <Route component={SignUpPage} path="/signup"/>
-                            </Switch>
-                        </div>
-                    </Router>}
+                <Router history={browserHistory}>
+                    <div className="lioenix_router">
+                        <GlobalNav isLogin={user.isLogin}/>
+                        <Switch>
+                            <Route component={LoginPage} path="/login" />
+                            <Route exact component={HomePage} path="/" />
+                            <Route component={DashboardPage} path="/dashboard" />
+                            <Route component={ForumPage} path="/forum" />
+                            <Route component={SettingPage} path="/setting" />
+                            <Route component={SignUpPage} path="/signup"/>
+                        </Switch>
+                    </div>
+                </Router>
             </div>
         );
     }
 }
 
-const HomePage = () => <div>Home Page</div>
 const ForumPage = () => <div>This is Forum Page</div>
 
 const mapStateToProps = (state) => ({
