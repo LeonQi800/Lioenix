@@ -1,0 +1,25 @@
+.circle__nav-main{
+    height: 20px;
+    max-width: 500px;
+}
+
+.circle__nav_ul{
+    list-style-type: none;
+}
+
+.circle__nav_ul li{
+    float: left;
+    padding: 0px 10px;
+    color: #30709b;
+}
+
+.circle__nav_ul li:hover{
+    cursor: pointer;
+    font-weight: bolder;
+    color: #194766;
+}
+
+.circle__nav-break-line{
+    border-bottom: 1px solid #30709b;
+    margin: 0px 10px;
+}

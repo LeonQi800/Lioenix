@@ -42,6 +42,7 @@ const user = (state = initialState, action = {}) => {
     case USER_SIGN_UP_SUCCESS:
       return {
         ...state,
+        isLogin: true,
         isLoading: false,
         isRegistered: true,
       };

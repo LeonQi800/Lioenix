@@ -8,9 +8,9 @@ router.post('/user/signup', userService.createUser);
 
 router.post('/user/checkEmail', userService.checkEmail);
 
-router.put('/user/update/', userService.updateUser);
+// router.put('/user/update/', userService.updateUser);
 
-router.delete('/user/delete/', userService.deleteUser);
+// router.delete('/user/delete/', userService.deleteUser);
 
 
 module.exports = router;

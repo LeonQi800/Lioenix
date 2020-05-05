@@ -1,5 +1,5 @@
 .header__container{
-    background-color: #f8f8f8;
+    background-color: #000000;
     text-align: center;
     font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
@@ -11,13 +11,14 @@
 .header__title span{
     font-size: 38px;
     font-weight: bolder;
+    color: #ffffff;
 }
 
 .header__subtitle{
     font-size: 17px;
     line-height: 1.47059;
     font-weight: 400;
-    color: #9393a2;
+    color: #a3a3a3;
     direction: ltr;
     letter-spacing: 0em;
     -webkit-box-direction: normal;
@@ -38,7 +39,7 @@
     direction: ltr;
     font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
     -webkit-box-direction: normal;
-    color: #06c;
+    color: #add8e6;
     letter-spacing: inherit;
     font-style: normal;
 }

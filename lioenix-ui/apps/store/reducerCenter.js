@@ -3,10 +3,12 @@ import {combineReducers} from 'redux';
 
 import user from './reducers/user';
 import general from './reducers/general';
+import article from './reducers/article';
 
 export default combineReducers({
     user,
-    general
+    general,
+    article
 });
 
 // const createRootReducer = history => {

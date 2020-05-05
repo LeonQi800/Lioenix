@@ -1,7 +1,8 @@
-import {MODAL_OPEN_REQUEST, MODAL_CLOSE_REQUEST} from "../../constants/actionTypes"
+import {MODAL_OPEN_REQUEST, MODAL_CLOSE_REQUEST, SWITCH_LANGUAGE_TYPE} from "../../constants/actionTypes"
 
 const initialState = {
-    isModalOpened: false
+    isModalOpened: false,
+    isEnglish: true
 }
 
 const general = (state = initialState, action ={}) => {
@@ -17,6 +18,11 @@ const general = (state = initialState, action ={}) => {
             return {
                 ...state,
                 isModalOpened: false,
+            }
+        case SWITCH_LANGUAGE_TYPE:
+            return {
+                ...state,
+                isEnglish: !state.isEnglish
             }
         default:
             return state;

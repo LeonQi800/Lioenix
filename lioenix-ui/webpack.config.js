@@ -18,7 +18,12 @@ module.exports = (env, {mode}) => {
             {
                 test: /\.scss$/,
                 use: ['scss-loader']
-          }
+            },
+            {
+      　　　　　 test: /\.(png|jpg)$/,
+      　　　　　 loader: 'url-loader?limit=8192'
+              
+            }
         ]
     },
     resolve: {

@@ -8,6 +8,7 @@ import CommonFooter from "../shared/common-footer";
 import TextField from "../shared/textField";
 import Modal from "../shared/modal";
 import { Email_reg } from "../shared/utils";
+import "../shared/css/spinner.css";
 
 export class SignUpPage extends Component {
   constructor(props) {
@@ -29,7 +30,13 @@ export class SignUpPage extends Component {
       username,
       isSubmitDisable,
     } = this.state;
-    if (email.length != 0 && password.length != 0 && cf_password.length != 0 && username.length != 0 && isSubmitDisable) {
+    if (
+      email.length != 0 &&
+      password.length != 0 &&
+      cf_password.length != 0 &&
+      username.length != 0 &&
+      isSubmitDisable
+    ) {
       this.setState({
         isSubmitDisable: false,
       });
@@ -47,7 +54,11 @@ export class SignUpPage extends Component {
   submitSignUp = () => {
     const { username, email, password, cf_password } = this.state;
     if (!Email_reg.test(String(email).toLowerCase())) {
-      alert("Please input email correctly");
+      alert(
+        this.props.general.isEnglish
+          ? "Please input email correctly"
+          : "请正确填写邮箱"
+      );
     } else if (password === cf_password) {
       this.props.signUpUser({
         username: username,
@@ -56,7 +67,11 @@ export class SignUpPage extends Component {
       });
       this.props.controlModalOpen();
     } else {
-      alert("The password did not match the re-typed password");
+      alert(
+        this.props.general.isEnglish
+          ? "The password did not match the re-typed password"
+          : "密码两次输入不一致"
+      );
     }
   };
 
@@ -66,14 +81,21 @@ export class SignUpPage extends Component {
 
   render() {
     const { isSubmitDisable } = this.state;
-    if (this.props.user.isRegistered) {
+    const general = this.props.general;
+    const user = this.props.user;
+
+    if (user.isRegistered) {
       return (
         <div>
-          <CommonHeader title={"Sign Up"} />
+          <CommonHeader title={general.isEnglish ? "Sign Up" : "注册"} />
           <Modal
             isOpen={true}
             type="success"
-            context="Sign up success, please click OK to redirect!!"
+            context={
+              general.isEnglish
+                ? "Sign up success, please click OK to redirect!!"
+                : "注册成功，请点击OK跳转！！"
+            }
             buttonFun={this.signUpCloseModal}
             buttonTitle="OK"
           />
@@ -83,65 +105,76 @@ export class SignUpPage extends Component {
       return (
         <div>
           <CommonHeader
-            title={"Sign Up"}
-            link={"Already have account? Click here to sign in."}
+            title={general.isEnglish ? "Sign Up" : "注册"}
+            link={
+              general.isEnglish
+                ? "Already have account? Click here to sign in."
+                : "已经有账户？ 点击这里登录。"
+            }
             linkUrl={"/login"}
           />
           <Modal
-            isOpen={this.props.user.isError}
+            isOpen={user.isError}
             type="error"
-            context="Email already token."
+            context={
+              general.isEnglish ? "Email already token." : "邮箱已经注册"
+            }
           />
-
-          <div className="sign-up__container">
-            <fieldset className="sign-up__fieldset">
-              <fieldset className="sign-up__fieldset__element">
-                <TextField
-                  name="username"
-                  type="text"
-                  placeholder="User Name"
-                  onChange={this.handleInputChange}
-                />
+          {user.isLoading ? (
+            <div className="loader">Loading...</div>
+          ) : (
+            <div className="sign-up__container">
+              <fieldset className="sign-up__fieldset">
+                <fieldset className="sign-up__fieldset__element">
+                  <TextField
+                    name="username"
+                    type="text"
+                    placeholder={general.isEnglish ? "User Name" : "用户名"}
+                    onChange={this.handleInputChange}
+                  />
+                </fieldset>
+                <fieldset className="sign-up__fieldset__element">
+                  <TextField
+                    name="email"
+                    type="email"
+                    placeholder={general.isEnglish ? "Email" : "邮箱"}
+                    onChange={this.handleInputChange}
+                  />
+                </fieldset>
+                <fieldset className="sign-up__fieldset__element">
+                  <TextField
+                    name="password"
+                    type="password"
+                    placeholder={general.isEnglish ? "Password" : "密码"}
+                    onChange={this.handleInputChange}
+                  />
+                </fieldset>
+                <fieldset className="sign-up__fieldset__element">
+                  <TextField
+                    name="cf_password"
+                    type="password"
+                    placeholder={
+                      general.isEnglish ? "Confirm Password" : "确认密码"
+                    }
+                    onChange={this.handleInputChange}
+                  />
+                </fieldset>
+                <fieldset className="sign-up__fieldset__element">
+                  <button
+                    disabled={isSubmitDisable}
+                    className={
+                      isSubmitDisable
+                        ? "sign-up__button sign-up__button-disable"
+                        : "sign-up__button"
+                    }
+                    onClick={this.submitSignUp}
+                  >
+                    {general.isEnglish ? "Submit" : "提交"}
+                  </button>
+                </fieldset>
               </fieldset>
-              <fieldset className="sign-up__fieldset__element">
-                <TextField
-                  name="email"
-                  type="email"
-                  placeholder="Email"
-                  onChange={this.handleInputChange}
-                />
-              </fieldset>
-              <fieldset className="sign-up__fieldset__element">
-                <TextField
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  onChange={this.handleInputChange}
-                />
-              </fieldset>
-              <fieldset className="sign-up__fieldset__element">
-                <TextField
-                  name="cf_password"
-                  type="password"
-                  placeholder="Confirm Password"
-                  onChange={this.handleInputChange}
-                />
-              </fieldset>
-              <fieldset className="sign-up__fieldset__element">
-                <button
-                  disabled={isSubmitDisable}
-                  className={
-                    isSubmitDisable
-                      ? "sign-up__button sign-up__button-disable"
-                      : "sign-up__button"
-                  }
-                  onClick={this.submitSignUp}
-                >
-                  Submit
-                </button>
-              </fieldset>
-            </fieldset>
-          </div>
+            </div>
+          )}
           <CommonFooter />
         </div>
       );
