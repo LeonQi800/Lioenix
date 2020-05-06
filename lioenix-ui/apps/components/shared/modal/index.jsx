@@ -5,18 +5,20 @@ import {controlModalClose} from "../../../store/reducers/general.action";
 
 class Modal extends Component {
     render(){
+        const {general, isOpen, type, context, buttonTitle, buttonFun, controlModalClose} = this.props;
         return(
             <div>
-                {(this.props.general.isModalOpened && this.props.isOpen) && <div className="modal__overlay">
+                {(general.isModalOpened && isOpen) && <div className="modal__overlay">
                     <div className="modal__frame">
                         <span>
-                            <p className={this.props.type? "modal__header-"+this.props.type: "modal__header"}>
-                                {this.props.type && this.props.type.toUpperCase()}
+                            <p className={type? "modal__header-"+type: "modal__header"}>
+                                {type && type.toUpperCase()}
                             </p>
+                            <div className="modal__line-break"></div>
                             <p>
-                                {this.props.context}
+                                {context}
                             </p>
-                            <button className="modal__close-button" onClick={this.props.controlModalClose}>Close</button>
+                            <button className="modal__close-button" onClick={buttonFun? buttonFun : controlModalClose}>{buttonTitle ? buttonTitle : "Close" }</button>
                         </span>
                     </div>
                 </div>}
