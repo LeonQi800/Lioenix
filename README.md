@@ -3,14 +3,16 @@
 <a href="https://www.linkedin.com/in/leon-chao-qi-085335168" target="\_parent"><img src="https://img.shields.io/badge/Linkdin-Leon-brightgreen" /></a>
 
 ### Feature
+
+*Version 0.15: Sign in & Sign Up update*
 *Version 0.1: basic setup*
 
 ### About this app
 Lioenix is my first full stack forum project which have full control ability, user login by different can view/use differnt function, and only administrator can give/remove user authorization.
 
 ### Screenshot
-![UI Screen shot](./lioenix-ui/public/screenshot/UIScreenshot01.PNG)
-![UI Screen shot](./lioenix-ui/public/screenshot/UIScreenshot02.PNG)
+![UI Screen shot](./lioenix-ui/public/UIScreenshot01.PNG)
+![UI Screen shot](./lioenix-ui/public/UIScreenshot02.PNG)
 
 ### API references
 <a href="https://reactjs.org/docs/react-api.html">React API</a>
