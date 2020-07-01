@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  lio_nginx:
+    image: nginx:stable-alpine
+    container_name: lio-nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./build:/usr/share/nginx/html
+      - ./lioenix-config/localtime:/etc/localtime
+      - ./lioenix-config/nginx/conf.d:/etc/nginx/conf.d
+      - ./lioenix-config/nginx/logs:/var/log/nginx
+    # depends_on:
+    networks:
+      - lio-network
+
+
+  lio-mysql:
+    image: mysql:5.7
+    restart: always
+    container_name: lio-mysql
+    networks: 
+      - lio-network
+    ports: 
+      - 3306:3306
+    environment: 
+      MYSQL_ROOT_PASSWORD: test321
+      MYSQL_USER: dev2020
+      MYSQL_PASSWORD: dev2020
+      MYSQL_DATABASE: lioenix_db
+      TZ: 'Asia/Shanghai'
+    # command:
+    #   -- max_allowed_packet=128M
+    volumes: 
+      - ./lioenix-data/mysql:/var/lib/mysql
+
+networks:
+  lio-network:
+    name: lio-net
+    driver: bridge

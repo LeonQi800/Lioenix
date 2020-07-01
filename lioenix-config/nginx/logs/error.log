@@ -1,0 +1,5 @@
+2020/06/30 09:14:22 [error] 6#6: *1 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.29.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost"
+2020/06/30 09:14:23 [error] 6#6: *2 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.29.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2020/06/30 09:14:31 [error] 6#6: *4 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.29.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost"
+2020/06/30 09:14:31 [error] 6#6: *3 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.29.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2020/07/01 01:58:39 [error] 6#6: *1 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.29.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
